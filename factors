@@ -3,13 +3,11 @@
 import math
 import sys
 
-
 def fac_me(x):
     for ii in range(2, int(math.sqrt(x)) + 1):
         if x % ii == 0:
             return ii, x // ii
     return x, 1
-
 
 def main(fil_m):
     with open(fil_m, 'r') as file:
@@ -18,11 +16,10 @@ def main(fil_m):
             fac = fac_me(nm)
             print(f"{nm}={fac[0]}*{fac[1]}")
 
-
 if __name__ == "__main__":
     if len(sys.argv) != 2:
         print("Usage: factors <file>")
         sys.exit(1)
-
+    
     fil_m = sys.argv[1]
     main(fil_m)

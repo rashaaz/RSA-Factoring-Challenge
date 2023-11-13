@@ -1,0 +1,35 @@
+#!/usr/bin/python3
+
+import math
+import sys
+
+
+def i_p(nb):
+    if nb < 2:
+        return False
+    for i in range(2, int(math.sqrt(nb)) + 1):
+        if nb % i == 0:
+            return False
+    return True
+
+
+def f_p_fac(x):
+    for i in range(2, int(math.sqrt(x)) + 1):
+        if x % i == 0 and i_p(i):
+            return i, x // i
+    return x, 1
+
+def main(f_pas):
+    with open(f_pas, 'r') as file:
+        for line in file:
+            rs_nb = int(line.strip())
+            p_fac_1, p_fac_2 = f_p_fac(rs_nb)
+            print(f"{rs_nb}={p_fac_1}*{p_fac_2}")
+
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("Usage: rsa <file>")
+        sys.exit(1)
+    
+    f_pas = sys.argv[1]
+    main(f_pas)
